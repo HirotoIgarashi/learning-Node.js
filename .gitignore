@@ -130,3 +130,4 @@ dist
 .pnp.*
 myapp/package-lock.json
 myapp/helloworld
+myapp/hello.txt
