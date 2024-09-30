@@ -8,15 +8,15 @@ Node.jsのインストールには[nvm](Node Version Manager)を使用します�
 
 ### バージョンマネージャnvmのインストール
 
-その時点のnvmの最新版をnvmのサイトで調べます。v.40.1の場合、以下のコマンドを実行します。
+その時点のnvmの最新版を[nvm]のサイトで調べます。v.40.1の場合、以下のコマンドを実行します。
 
-```bash
+```fish
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
 ```
 
 バージョンを確認します。
 
-```bash
+```fish
 nvm --version
 0.40.1
 ```
@@ -25,45 +25,49 @@ nvm --version
 
 - 最新のActive LTSバージョンをインストール
 
-```
+```fish
 nvm install --lts
 ```
 
 - 最新バージョンをインストール
 
-```
+```fish
 nvm install node
 ```
 
 - インストール可能なバージョンの一覧を表示する
 
-```
+```fish
 nvm ls-remote
 ```
 
 - バージョンを指定してインストール
 
-```
+```fish
 nvm install 22.7.0
 ```
 
 - 使うバージョンを指定する
 
-```
+```fish
 nvm use 22.7.0
 ```
 
 - インストール済みのバージョンの一覧を表示する
 
-```
+```fish
 nvm use 22.7.0
 ```
 
 - インストール済みのバージョンを削除する
 
-```
+```fish
 nvm uninstall 22.7.0
 ```
+
+## package.jsonの設定
+
+## eslintの設定
 
 ## テスト環境の構築
 
