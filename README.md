@@ -67,7 +67,7 @@ nvm uninstall 22.7.0
 
 ## package.jsonの設定
 
-## eslintの設定
+## ESLintの設定
 
 ## テスト環境の構築
 
