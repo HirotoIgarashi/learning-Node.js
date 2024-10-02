@@ -5,7 +5,7 @@
     "main": "index.js",
     "scripts": {
         "test-org": "echo \"Error: no test specified\" && exit 1",
-        "test": "mocha",
+        "test": "mocha myapp/mochaFileWrite.js",
         "lint": "eslint . --ext .ts,.tsx"
     },
     "author": "",
