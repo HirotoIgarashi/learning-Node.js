@@ -1,7 +1,5 @@
 const fs = require("fs");
 
-// import fs from "fs";
-
 describe("fs", () => {
     describe("writeFile", () => {
         it("エラーなしで実行できる", (done) => {
