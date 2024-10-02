@@ -1,28 +1,29 @@
 {
-  "name": "myapp",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint . --ext .ts,.tsx"
-  },
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "@typescript-eslint/eslint-plugin": "^8.7.0",
-    "@typescript-eslint/parser": "^8.7.0",
-    "eslint-plugin-react": "^7.37.0",
-    "express": "^4.21.0"
-  },
-  "devDependencies": {
-    "@eslint/eslintrc": "^3.1.0",
-    "@eslint/js": "^9.11.1",
-    "chai": "^5.1.1",
-    "eslint": "^9.11.1",
-    "globals": "^15.9.0",
-    "mocha": "^10.7.3",
-    "nyc": "^17.1.0",
-    "sinon": "^19.0.2"
-  }
+    "name": "myapp",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test-org": "echo \"Error: no test specified\" && exit 1",
+        "test": "mocha",
+        "lint": "eslint . --ext .ts,.tsx"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "@typescript-eslint/eslint-plugin": "^8.7.0",
+        "@typescript-eslint/parser": "^8.7.0",
+        "eslint-plugin-react": "^7.37.0",
+        "express": "^4.21.0"
+    },
+    "devDependencies": {
+        "@eslint/eslintrc": "^3.1.0",
+        "@eslint/js": "^9.11.1",
+        "chai": "^5.1.1",
+        "eslint": "^9.11.1",
+        "globals": "^15.9.0",
+        "mocha": "^10.7.3",
+        "nyc": "^17.1.0",
+        "sinon": "^19.0.2"
+    }
 }

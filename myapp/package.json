@@ -1,25 +1,26 @@
 {
-  "name": "myapp",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint"
-  },
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "express": "^4.21.0"
-  },
-  "devDependencies": {
-    "chai": "^5.1.1",
-    "eslint": "^9.11.1",
-    "eslint-config-google": "^0.14.0",
-    "mocha": "^10.7.3",
-    "nyc": "^17.1.0",
-    "prettier-eslint": "^16.3.0",
-    "prettier-eslint-cli": "^8.0.1",
-    "sinon": "^19.0.2"
-  }
+    "name": "myapp",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "testorg": "echo \"Error: no test specified\" && exit 1",
+        "test": "mocha mochaFileWrite.js",
+        "lint": "eslint"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "express": "^4.21.0"
+    },
+    "devDependencies": {
+        "chai": "^5.1.1",
+        "eslint": "^9.11.1",
+        "eslint-config-google": "^0.14.0",
+        "mocha": "^10.7.3",
+        "nyc": "^17.1.0",
+        "prettier-eslint": "^16.3.0",
+        "prettier-eslint-cli": "^8.0.1",
+        "sinon": "^19.0.2"
+    }
 }
