@@ -14,7 +14,13 @@ describe("fs", () => {
     });
 });
 describe("predicate", () => {
-    it("1 + 2で3を返す", () => {
-        assert.equal(predicate.add(1, 2), 3);
+    it("数値を比較する", () => {
+        assert.equal(predicate.lessOrEqual(1, 2), true);
+    });
+    it("数値を比較する", () => {
+        assert.equal(predicate.lessOrEqual(2, 1), false);
+    });
+    it("数値を比較する", () => {
+        assert.equal(predicate.lessOrEqual(1, 1), true);
     });
 });

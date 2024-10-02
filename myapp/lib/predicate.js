@@ -1,1 +1,3 @@
-module.exports.add = (a, b) => a + b;
+module.exports.lessOrEqual = (x, y) => {
+    return x <= y;
+};
