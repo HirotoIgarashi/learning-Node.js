@@ -1,4 +1,10 @@
 const fs = require("fs");
+const assert = require("assert");
+const testFunction = () => 0;
+function Ninja() {}
+var ninja = new Ninja();
+
+// predicate.jsのテスト
 const lessOrEqual = require("../lib/predicate").lessOrEqual;
 const isArray = require("../lib/predicate").isArray;
 const isObject = require("../lib/predicate").isObject;
@@ -7,10 +13,6 @@ const isFinite = require("../lib/predicate").isFinite;
 const isZipCodeJp = require("../lib/predicate").isZipCodeJp;
 const isNaN = require("../lib/predicate").isNaN;
 const isNull = require("../lib/predicate").isNull;
-const assert = require("assert");
-const testFunction = () => 0;
-function Ninja() {}
-var ninja = new Ninja();
 
 describe("fs", () => {
     describe("writeFile", () => {
