@@ -93,7 +93,6 @@ describe("db", () => {
                     console.log(row.id + ": " + row.info);
                 });
             });
-
             db.close();
             done();
         });
