@@ -14,6 +14,10 @@ const isZipCodeJp = require("../lib/predicate").isZipCodeJp;
 const isNaN = require("../lib/predicate").isNaN;
 const isNull = require("../lib/predicate").isNull;
 
+// sqlite3.jsのテスト
+const createDataBase = require("../lib/sqlite3").createDataBase;
+const isExistDataBase = require("../lib/sqlite3").isExistDataBase;
+
 describe("fs", () => {
     describe("writeFile", () => {
         it("エラーなしで実行できる", (done) => {
@@ -94,6 +98,12 @@ describe("db", () => {
                 });
             });
             db.close();
+            done();
+        });
+    });
+    describe("create Table", () => {
+        it("エラーなしで実行できる", (done) => {
+            createDataBase("test.sqlite3");
             done();
         });
     });
