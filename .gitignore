@@ -132,3 +132,4 @@ myapp/package-lock.json
 myapp/helloworld
 myapp/hello.txt
 package-lock.json
+test.sqlite3
