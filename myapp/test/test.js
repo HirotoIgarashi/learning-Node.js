@@ -101,7 +101,7 @@ describe("db", () => {
             done();
         });
     });
-    describe("create Table", () => {
+    describe("create dataBase", () => {
         it("エラーなしで実行できる", (done) => {
             createDataBase("test.sqlite3");
             done();
