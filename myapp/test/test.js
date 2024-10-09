@@ -15,8 +15,11 @@ const isNaN = require("../lib/predicate").isNaN;
 const isNull = require("../lib/predicate").isNull;
 
 // sqlite3.jsのテスト
+const dataBaseName = "test.sqlite3";
+
 const createDataBase = require("../lib/sqlite3").createDataBase;
-const isExistDataBase = require("../lib/sqlite3").isExistDataBase;
+const isExistsDataBase = require("../lib/sqlite3").isExistsDataBase;
+const deleteDataBase = require("../lib/sqlite3").deleteDataBase;
 
 describe("fs", () => {
     describe("writeFile", () => {
@@ -94,7 +97,7 @@ describe("db", () => {
                 stmt.finalize();
 
                 db.each("SELECT rowid AS id, info FROM lorem", (_err, row) => {
-                    console.log(row.id + ": " + row.info);
+                    // console.log(row.id + ": " + row.info);
                 });
             });
             db.close();
@@ -103,8 +106,28 @@ describe("db", () => {
     });
     describe("create dataBase", () => {
         it("エラーなしで実行できる", (done) => {
-            createDataBase("test.sqlite3");
+            createDataBase(dataBaseName);
             done();
+        });
+    });
+    describe("isExists dataBase", () => {
+        it("リターンコードがtrueかどうか", () => {
+            assert.equal(isExistsDataBase(dataBaseName), true);
+        });
+        // it("エラーなしで実行できる", (done) => {
+        //     isExistsDataBase(dataBaseName);
+        //     done();
+        // });
+    });
+    describe("delete dataBase", () => {
+        it("エラーなしで実行できる", (done) => {
+            deleteDataBase(dataBaseName);
+            done();
+        });
+    });
+    describe("isExists dataBase", () => {
+        it("エラーで終了する", () => {
+            assert.equal(isExistsDataBase(dataBaseName), false);
         });
     });
 });

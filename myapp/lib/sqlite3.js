@@ -1,5 +1,16 @@
+const fs = require("fs");
 const sqlite3 = require("sqlite3").verbose();
 // const db = new sqlite3.Database(':memory:');
+
+module.exports.isExistsDataBase = (fileName) => {
+    try {
+        fs.accessSync(fileName, fs.constants.R_OK | fs.constants.W_OK);
+    } catch (err) {
+        console.log("err_code: " + err.code);
+        return false;
+    }
+    return true;
+};
 
 module.exports.createDataBase = (fileName) => {
     const db = new sqlite3.Database(
@@ -9,9 +20,11 @@ module.exports.createDataBase = (fileName) => {
     return db;
 };
 
-module.exports.isExistDataBase = (dataBaseName) => {
-    const db = new sqlite3.Database(dataBaseName);
-    return db;
+module.exports.deleteDataBase = (fileName) => {
+    if (fs.rmSync(fileName)) {
+        return true;
+    }
+    return false;
 };
 
 module.exports.createTable = (db, tableName) => {
