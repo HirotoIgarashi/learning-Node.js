@@ -105,27 +105,34 @@ describe("db", () => {
         });
     });
     describe("create dataBase", () => {
+        after(() => {
+            deleteDataBase(dataBaseName);
+        });
         it("エラーなしで実行できる", (done) => {
             createDataBase(dataBaseName);
             done();
         });
-    });
-    describe("isExists dataBase", () => {
         it("リターンコードがtrueかどうか", () => {
             assert.equal(isExistsDataBase(dataBaseName), true);
         });
-        // it("エラーなしで実行できる", (done) => {
-        //     isExistsDataBase(dataBaseName);
-        //     done();
-        // });
     });
     describe("delete dataBase", () => {
+        after(() => {
+            if (isExistsDataBase(dataBaseName)) {
+                deleteDataBase(dataBaseName);
+            }
+        });
+        it("エラーなしで実行できる", (done) => {
+            createDataBase(dataBaseName);
+            done();
+        });
+        it("エラーなしで終了する", () => {
+            assert.equal(isExistsDataBase(dataBaseName), true);
+        });
         it("エラーなしで実行できる", (done) => {
             deleteDataBase(dataBaseName);
             done();
         });
-    });
-    describe("isExists dataBase", () => {
         it("エラーで終了する", () => {
             assert.equal(isExistsDataBase(dataBaseName), false);
         });
