@@ -19,7 +19,8 @@ const isExistsDataBase = require("../lib/sqlite3").isExistsDataBase;
 const deleteDataBase = require("../lib/sqlite3").deleteDataBase;
 
 const parseJSONSync = require("../lib/json.js").parseJSONSync;
-const parseJSONSyncV2 = require("../lib/json.js").parseJSONSyncV2;
+const parseJSONAsync = require("../lib/json.js").parseJSONAsync;
+const parseJSONSyncWithCache = require("../lib/json.js").parseJSONSyncWithCache;
 
 describe("fsのテスト", () => {
     describe("writeFile", () => {
@@ -173,10 +174,29 @@ describe("Asynchronous Programming", () => {
             parseJSONSync('{"message": "Hello", "to": "World"}');
             done();
         });
-        it("parseJSONSyncV2", (done) => {
-            parseJSONSyncV2("不正なJSON", (err, result) => {
+        it("parseJSONAsync", (done) => {
+            parseJSONAsync("不正なJSON", (err, result) => {
                 console.log("parse結果", err, result);
             });
+            done();
+        });
+        it("parseJSONSyncWithCache", (done) => {
+            // const cache2 = {};
+            parseJSONSyncWithCache(
+                '{"message": "Hello", "to": "World"}',
+                (err, result) => {
+                    console.log("１回目の結果", err, result);
+                    // コールバックの中で２回目を実行
+                    parseJSONSyncWithCache(
+                        '{"message": "Hello", "to": "World"}',
+                        (err, result) => {
+                            console.log("２回目の結果", err, result);
+                        },
+                    );
+                    console.log("２回目の呼び出し完了");
+                },
+            );
+            console.log("１回目の呼び出し完了");
             done();
         });
     });
