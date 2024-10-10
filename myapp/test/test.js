@@ -14,14 +14,13 @@ const isZipCodeJp = require("../lib/predicate").isZipCodeJp;
 const isNaN = require("../lib/predicate").isNaN;
 const isNull = require("../lib/predicate").isNull;
 
-// sqlite3.jsのテスト
-const dataBaseName = "test.sqlite3";
-
 const createDataBase = require("../lib/sqlite3").createDataBase;
 const isExistsDataBase = require("../lib/sqlite3").isExistsDataBase;
 const deleteDataBase = require("../lib/sqlite3").deleteDataBase;
 
-describe("fs", () => {
+const parseJSONSync = require("../lib/json.js").parseJSONSync;
+
+describe("fsのテスト", () => {
     describe("writeFile", () => {
         it("エラーなしで実行できる", (done) => {
             fs.writeFile("hello.txt", "Hello world", (err) =>
@@ -33,7 +32,7 @@ describe("fs", () => {
     });
 });
 
-describe("predicate", () => {
+describe("predicate関数のテスト", () => {
     it("より小さいかイコールか 1 < 2なのでtrue", () => {
         assert.equal(lessOrEqual(1, 2), true);
     });
@@ -80,8 +79,18 @@ describe("predicate", () => {
         assert.equal(isNaN(0 / 0), true);
     });
 });
+// テンプレート
+// describe("Level1", () => {
+//     describe("Level2", () => {
+//         it("Level3", () => {
+//         });
+//     });
+// });
 
-describe("db", () => {
+// sqlite3.jsのテスト
+const dataBaseName = "test.sqlite3";
+
+describe("sqlite3のテスト", () => {
     describe("create Table and Insert Data", () => {
         it("エラーなしで実行できる", (done) => {
             const sqlite3 = require("sqlite3").verbose();
@@ -108,33 +117,60 @@ describe("db", () => {
         after(() => {
             deleteDataBase(dataBaseName);
         });
-        it("エラーなしで実行できる", (done) => {
+        it("createDataBaseがエラーなしで実行できる", (done) => {
             createDataBase(dataBaseName);
             done();
         });
-        it("リターンコードがtrueかどうか", () => {
+        it("isExistsDataBaseのリターンコードがtrueかどうか", () => {
             assert.equal(isExistsDataBase(dataBaseName), true);
         });
     });
     describe("delete dataBase", () => {
+        // ToDo: 非同期処理を意識して書き換える必要がある
         after(() => {
             if (isExistsDataBase(dataBaseName)) {
                 deleteDataBase(dataBaseName);
             }
         });
-        it("エラーなしで実行できる", (done) => {
+        it("createDataBaseがエラーなしで実行できる", (done) => {
             createDataBase(dataBaseName);
             done();
         });
-        it("エラーなしで終了する", () => {
+        it("isExistsDataBaseがエラーなしで終了する", () => {
             assert.equal(isExistsDataBase(dataBaseName), true);
         });
-        it("エラーなしで実行できる", (done) => {
+        it("deleteDataBaseがエラーなしで実行できる", (done) => {
             deleteDataBase(dataBaseName);
             done();
         });
-        it("エラーで終了する", () => {
+        it("isExistsDataBaseがエラーで終了する", () => {
             assert.equal(isExistsDataBase(dataBaseName), false);
+        });
+    });
+});
+
+// Asynchronous(非同期) Programmingのテスト
+// Asynchronousの反意語はSynchronous
+describe("Asynchronous Programming", () => {
+    describe("callback", () => {
+        it("setTimeout", (done) => {
+            setTimeout(() => {
+                console.log("１秒経過しました。");
+            }, 1000);
+            console.log("setTimeout()を実行しました。");
+            done();
+        });
+        it("fs.readdir()", (done) => {
+            fs.readdir(".", (err, files) => {
+                console.log("fs.readdir()実行結果");
+                console.log("err", err);
+                console.log("files", files);
+            });
+            done();
+        });
+        it("parseJSONSync", (done) => {
+            parseJSONSync('{"message": "Hello", "to": "World"}');
+            done();
         });
     });
 });
