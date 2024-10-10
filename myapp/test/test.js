@@ -28,8 +28,6 @@ describe("fsのテスト", () => {
             fs.writeFile("hello.txt", "Hello world", (err) =>
                 err ? done(err) : done(),
             );
-            // またはよりシンプルに
-            // fs.writeFile('hello.txt', 'Hello world', done);
         });
     });
 });
