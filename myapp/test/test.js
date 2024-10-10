@@ -19,6 +19,7 @@ const isExistsDataBase = require("../lib/sqlite3").isExistsDataBase;
 const deleteDataBase = require("../lib/sqlite3").deleteDataBase;
 
 const parseJSONSync = require("../lib/json.js").parseJSONSync;
+const parseJSONSyncV2 = require("../lib/json.js").parseJSONSyncV2;
 
 describe("fsのテスト", () => {
     describe("writeFile", () => {
@@ -170,6 +171,12 @@ describe("Asynchronous Programming", () => {
         });
         it("parseJSONSync", (done) => {
             parseJSONSync('{"message": "Hello", "to": "World"}');
+            done();
+        });
+        it("parseJSONSyncV2", (done) => {
+            parseJSONSyncV2("不正なJSON", (err, result) => {
+                console.log("parse結果", err, result);
+            });
             done();
         });
     });
