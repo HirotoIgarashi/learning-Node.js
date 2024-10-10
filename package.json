@@ -6,7 +6,7 @@
     "scripts": {
         "test-org": "echo \"Error: no test specified\" && exit 1",
         "test": "mocha myapp/test/test.js",
-        "lint": "npx eslint myapp/test/*.js"
+        "lint": "npx eslint myapp/lib/*.js"
     },
     "author": "",
     "license": "ISC",
