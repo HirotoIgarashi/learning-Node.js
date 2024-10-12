@@ -1,6 +1,5 @@
 const fs = require("fs");
 const assert = require("assert");
-const { parseJSONAsyncWithCache } = require("../lib/json.js");
 const testFunction = () => 0;
 function Ninja() {}
 var ninja = new Ninja();
@@ -22,7 +21,7 @@ const deleteDataBase = require("../lib/sqlite3").deleteDataBase;
 const parseJSONSync = require("../lib/json.js").parseJSONSync;
 const parseJSONAsync = require("../lib/json.js").parseJSONAsync;
 const parseJSONSyncWithCache = require("../lib/json.js").parseJSONSyncWithCache;
-const parseJSONAsyyncWithCache =
+const parseJSONAsyncWithCache =
     require("../lib/json.js").parseJSONAsyncWithCache;
 
 describe("fsのテスト", () => {
