@@ -42,8 +42,13 @@ const parseJSONAsyncWithCache = (json, callback) => {
     const cache3 = {};
     const cached = cache3[json];
     if (cached) {
-        // Node.jsのみを対象としたコードの場合
-        process.nextTick(() => callback(cached.err, cached.result));
+        // 1. Node.jsのみを対象としたコードの場合
+        // process.nextTick(() => callback(cached.err, cached.result));
+        // ブラウザ環境でも動かすコードの場合
+        // 2. queueMicrotask()を使う
+        // queueMicrotask(() => callback(cached.err, cached.result));
+        // 3. Promiseを使う
+        Promise.resolve().then(() => callback(cached.err, cached.result));
         return;
     }
     parseJSONAsync(json, (err, result) => {
