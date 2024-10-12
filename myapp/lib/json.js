@@ -37,3 +37,19 @@ const parseJSONSyncWithCache = (json, callback) => {
 };
 
 module.exports.parseJSONSyncWithCache = parseJSONSyncWithCache;
+
+const parseJSONAsyncWithCache = (json, callback) => {
+    const cache3 = {};
+    const cached = cache3[json];
+    if (cached) {
+        // Node.jsのみを対象としたコードの場合
+        process.nextTick(() => callback(cached.err, cached.result));
+        return;
+    }
+    parseJSONAsync(json, (err, result) => {
+        cache3[json] = { err, result };
+        callback(err, result);
+    });
+};
+
+module.exports.parseJSONAsyncWithCache = parseJSONAsyncWithCache;
