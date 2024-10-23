@@ -7,7 +7,6 @@ const parseJSONSync = (json) => {
         console.error("エラーをキャッチ", err);
     }
 };
-
 module.exports.parseJSONSync = parseJSONSync;
 
 const parseJSONAsync = (json, callback) => {
@@ -19,7 +18,6 @@ const parseJSONAsync = (json, callback) => {
         }
     }, 1000);
 };
-
 module.exports.parseJSONAsync = parseJSONAsync;
 
 const parseJSONSyncWithCache = (json, callback) => {
@@ -35,7 +33,6 @@ const parseJSONSyncWithCache = (json, callback) => {
         callback(err, result);
     });
 };
-
 module.exports.parseJSONSyncWithCache = parseJSONSyncWithCache;
 
 const parseJSONAsyncWithCache = (json, callback) => {
@@ -56,5 +53,4 @@ const parseJSONAsyncWithCache = (json, callback) => {
         callback(err, result);
     });
 };
-
 module.exports.parseJSONAsyncWithCache = parseJSONAsyncWithCache;
