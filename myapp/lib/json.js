@@ -20,6 +20,22 @@ const parseJSONAsync = (json, callback) => {
 };
 module.exports.parseJSONAsync = parseJSONAsync;
 
+const parseJSONPromise = (json) => {
+    // Promiseインスタンスを生成して返す(この時点ではPending状態)
+    return new Promise((resolve, reject) =>
+        setTimeout(() => {
+            try {
+                // fulfilled状態にする（この時点ではpending状態）
+                resolve(JSON.parse(json));
+            } catch (err) {
+                // reject状態にする（解決）
+                reject(err);
+            }
+        }, 1000),
+    );
+};
+module.exports.parseJSONPromise = parseJSONPromise;
+
 const parseJSONSyncWithCache = (json, callback) => {
     const cache2 = {};
     const cached = cache2[json];
