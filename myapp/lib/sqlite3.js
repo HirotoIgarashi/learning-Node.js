@@ -27,7 +27,7 @@ module.exports.deleteDataBase = (fileName) => {
     return false;
 };
 
-module.exports.createTable = (db, tableName) => {
+modul.exports.createTable = (db, tableName) => {
     db.serialize(() => {
         db.run(`CREATE TABLE ${tableName} (info TEXT)`);
     });
