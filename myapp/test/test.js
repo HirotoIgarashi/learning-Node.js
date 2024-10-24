@@ -219,7 +219,4 @@ describe("Asynchronous Programming", () => {
             done();
         });
     });
-    describe("Promise", () => {
-        it("Level3", () => {});
-    });
 });
