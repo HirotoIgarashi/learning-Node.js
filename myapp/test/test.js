@@ -222,7 +222,7 @@ describe("Asynchronous Programming", () => {
     });
     describe("Promise", () => {
         it("parseJSONAsync", (done) => {
-            const toBeFullFilled = parseJSONAsync("{foo}: 1");
+            const toBeFullFilled = parseJSONAsync('{"foo": 1}');
             const toBeFullRejected = parseJSONAsync("不正なJSON");
             console.log("************ Promise生成直後 ************");
             console.log(toBeFullFilled);
