@@ -9,7 +9,7 @@ const parseJSONSync = (json) => {
 };
 module.exports.parseJSONSync = parseJSONSync;
 
-const parseJSONAsync = (json, callback) => {
+const parseJSONAsyncCallback = (json, callback) => {
     setTimeout(() => {
         try {
             callback(null, JSON.parse(json));
@@ -18,7 +18,7 @@ const parseJSONAsync = (json, callback) => {
         }
     }, 1000);
 };
-module.exports.parseJSONAsync = parseJSONAsync;
+module.exports.parseJSONAsyncCallback = parseJSONAsyncCallback;
 
 const parseJSONPromise = (json) => {
     // Promiseインスタンスを生成して返す(この時点ではPending状態)
@@ -44,7 +44,7 @@ const parseJSONSyncWithCache = (json, callback) => {
         setTimeout(() => callback(cached.err, cached.result), 0);
         return;
     }
-    parseJSONAsync(json, (err, result) => {
+    parseJSONAsyncCallback(json, (err, result) => {
         cache2[json] = { err, result };
         callback(err, result);
     });
@@ -64,7 +64,7 @@ const parseJSONAsyncWithCache = (json, callback) => {
         Promise.resolve().then(() => callback(cached.err, cached.result));
         return;
     }
-    parseJSONAsync(json, (err, result) => {
+    parseJSONAsyncCallback(json, (err, result) => {
         cache3[json] = { err, result };
         callback(err, result);
     });
