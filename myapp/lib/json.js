@@ -20,6 +20,22 @@ const parseJSONAsyncCallback = (json, callback) => {
 };
 module.exports.parseJSONAsyncCallback = parseJSONAsyncCallback;
 
+const parseJSONAsync = (json) => {
+    // Promiseインスタンスを生成して返す（この時点ではpending状態)
+    return new Promise((resolve, reject) =>
+        setTimeout(() => {
+            try {
+                // fullfill状態にする
+                resolve(JSON.parse(json));
+            } catch (err) {
+                // reject状態にする（拒否）
+                reject(err);
+            }
+        }, 1000),
+    );
+};
+module.exports.parseJSONAsync = parseJSONAsync;
+
 const parseJSONPromise = (json) => {
     // Promiseインスタンスを生成して返す(この時点ではPending状態)
     return new Promise((resolve, reject) =>

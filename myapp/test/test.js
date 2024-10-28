@@ -19,6 +19,7 @@ const isExistsDataBase = require("../lib/sqlite3").isExistsDataBase;
 const deleteDataBase = require("../lib/sqlite3").deleteDataBase;
 
 const parseJSONSync = require("../lib/json.js").parseJSONSync;
+const parseJSONAsync = require("../lib/json.js").parseJSONAsync;
 const parseJSONAsyncCallback = require("../lib/json.js").parseJSONAsyncCallback;
 const parseJSONSyncWithCache = require("../lib/json.js").parseJSONSyncWithCache;
 const parseJSONAsyncWithCache =
@@ -216,6 +217,21 @@ describe("Asynchronous Programming", () => {
                 },
             );
             console.log("１回目の呼び出し完了");
+            done();
+        });
+    });
+    describe("Promise", () => {
+        it("parseJSONAsync", (done) => {
+            const toBeFullFilled = parseJSONAsync("{foo}: 1");
+            const toBeFullRejected = parseJSONAsync("不正なJSON");
+            console.log("************ Promise生成直後 ************");
+            console.log(toBeFullFilled);
+            console.log(toBeFullRejected);
+            setTimeout(() => {
+                console.log("************ １秒後 ************");
+                console.log(toBeFullFilled);
+                console.log(toBeFullRejected);
+            }, 1000);
             done();
         });
     });
