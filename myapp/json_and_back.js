@@ -3,4 +3,7 @@ let profiles = require('./lib/profiles.js');
 
 profiles = JSON.stringify(profiles).replace(/name/g, 'fullname');
 
-console.log(profiles);
+profiles = JSON.parse(profiles);
+profiles.felix.fullname = "Felix Geisendörfer";
+
+console.log(profiles.felix);
