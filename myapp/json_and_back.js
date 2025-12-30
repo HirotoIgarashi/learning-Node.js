@@ -1,4 +1,4 @@
-let profiles = require('./lib/profiles.js');
+let profiles = require('./data/profiles');
 // .js拡張子はオプション
 
 profiles = JSON.stringify(profiles).replace(/name/g, 'fullname');
