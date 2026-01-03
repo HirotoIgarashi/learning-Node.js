@@ -1,5 +1,5 @@
 let profiles = require('./data/profiles');
-// .js拡張子はオプション
+// .jsは不要。.js拡張子はオプション
 
 profiles = JSON.stringify(profiles).replace(/name/g, 'fullname');
 
